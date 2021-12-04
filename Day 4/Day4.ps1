@@ -63,7 +63,8 @@ while ($winners -lt $bingocards.length) {
                 $bingocards[$i].won = $true
                 $winners++
                 Write-Host "Card $($i), round $($b)"
-                $score = [int]($picked | select -last 1) * ($bingocards[$i].numbers | ? {$picked -notcontains $_ } | measure-object  -sum).sum
+                $score = [int]($picked | select -last 1) * `
+                        ($bingocards[$i].numbers | ? {$picked -notcontains $_ } | measure-object  -sum).sum
             }
         }
     }
